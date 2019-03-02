@@ -16,7 +16,7 @@ namespace Matcher.Cases
 
         public Option<TResult> Match(TValue value)
         {
-            return new Option<TResult>(_factory());
+            return Option.Value(_factory());
         }
     }
 }

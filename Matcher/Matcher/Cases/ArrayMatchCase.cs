@@ -19,20 +19,20 @@ namespace Matcher.Cases
         public Option<TResult> Match(TValue value)
         {
             if (value == null)
-                return new Option<TResult>();
+                return Option.None<TResult>();
 
             var arr = (TElem[])(object)value;
             var actualCount = arr.Length;
             var expectedCount = _delegate.Method.GetParameters().Length;
 
             if (actualCount != expectedCount)
-                return new Option<TResult>();
+                return Option.None<TResult>();
 
             var callExpr = Expression.Call(Expression.Constant(_delegate.Target), _delegate.Method, arr.Select(x => Expression.Constant(x)).ToArray());
             var lambdaExpr = Expression.Lambda(callExpr);
             var result = lambdaExpr.Compile().DynamicInvoke();
 
-            return new Option<TResult>((TResult)result);
+            return Option.Value((TResult)result);
         }
     }
 }

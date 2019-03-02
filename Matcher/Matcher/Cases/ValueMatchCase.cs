@@ -19,15 +19,15 @@ namespace Matcher.Cases
         public Option<TResult> Match(TValue value)
         {
             if (value is IEquatable<TValue> eqv && eqv.Equals(_value))
-                return new Option<TResult>(_factory());
+                return Option.Value(_factory());
 
             if (value == null && _value == null)
-                return new Option<TResult>(_factory());
+                return Option.Value(_factory());
 
             if (value != null && value.Equals(_value))
-                return new Option<TResult>(_factory());
+                return Option.Value(_factory());
 
-            return new Option<TResult>();
+            return Option.None<TResult>();
         }
     }
 }

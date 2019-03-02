@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Matcher.Tests
 {
@@ -102,36 +103,83 @@ namespace Matcher.Tests
         }
 
         [Test]
+        public void ArrayRest()
+        {
+            var result = Match.Value(new[] {1, 2, 3})
+                              .AndReturn<string>()
+                              .With(x => { x.ArrayRest((a, rest) => $"{a} and {rest.Length} more"); });
+
+            Assert.AreEqual(result, "1 and 2 more");
+        }
+
+        [Test]
+        public void ArrayRestEmpty()
+        {
+            var result = Match.Value(new [] { 1, 2 })
+                              .AndReturn<string>()
+                              .With(x => { x.ArrayRest((a, b, rest) => $"{a}, {b}, and {rest.Length} more"); });
+
+            Assert.AreEqual(result, "1, 2, and 0 more");
+        }
+
+        [Test]
+        public void ArrayRestFewer()
+        {
+            var result = Match.Value(new[] { 1 })
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.ArrayRest((a, b, rest) => $"{a}, {b}, and {rest.Length} more");
+                                  x.Default(a => $"only {a.Length} item");
+                              });
+
+            Assert.AreEqual(result, "only 1 item");
+        }
+
+        [Test]
+        public void ClassicTuple()
+        {
+            var result = Match.Value(Tuple.Create(1))
+                              .AndReturn<int>()
+                              .With(x => { x.Tuple(a => a + 1); });
+
+            Assert.AreEqual(result, 2);
+        }
+
+        [Test]
+        public void ClassicTuple2()
+        {
+            var result = Match.Value(Tuple.Create(1, "test"))
+                              .AndReturn<int>()
+                              .With(x => { x.Tuple((a, b) => a + b.Length); });
+
+            Assert.AreEqual(result, 5);
+        }
+
+        [Test]
+        public void VTuple()
+        {
+            var result = Match.Value(ValueTuple.Create(1))
+                              .AndReturn<int>()
+                              .With(x => { x.Tuple(a => a + 1); });
+
+            Assert.AreEqual(result, 2);
+        }
+
+        [Test]
+        public void VTuple2()
+        {
+            var result = Match.Value(ValueTuple.Create(1, "test"))
+                              .AndReturn<int>()
+                              .With(x => { x.Tuple((a, b) => a + b.Length); });
+
+            Assert.AreEqual(result, 5);
+        }
+
+        [Test]
         public void IsOfType()
         {
-            var result = Match.Value(new SampleParent())
-                              .AndReturn<bool>()
-                              .With(x =>
-                              {
-                                  x.OfType().Is<SampleBase>(b => true);
-                              });
-
-            Assert.AreEqual(result, true);
-        }
-
-        [Test]
-        public void IsOfType2()
-        {
-            var result = Match.Value(new SampleParent())
-                              .AndReturn<bool>()
-                              .With(x =>
-                              {
-                                  x.OfType().IsExactly<SampleBase>(b => true);
-                                  x.Default(false);
-                              });
-
-            Assert.AreEqual(result, false);
-        }
-
-        [Test]
-        public void IsOfType3()
-        {
-            var result = Match.Value(new SampleParent() as SampleBase)
+            var result = Match.Value(new SampleChild())
                               .AndReturn<bool>()
                               .With(x =>
                               {
@@ -142,13 +190,40 @@ namespace Matcher.Tests
         }
 
         [Test]
-        public void IsOfType4()
+        public void IsOfType2()
         {
-            var result = Match.Value(new SampleParent() as SampleBase)
+            var result = Match.Value(new SampleChild())
                               .AndReturn<bool>()
                               .With(x =>
                               {
                                   x.OfType().IsExactly<SampleParent>(b => true);
+                                  x.Default(false);
+                              });
+
+            Assert.AreEqual(result, false);
+        }
+
+        [Test]
+        public void IsOfType3()
+        {
+            var result = Match.Value(new SampleChild() as SampleParent)
+                              .AndReturn<bool>()
+                              .With(x =>
+                              {
+                                  x.OfType().Is<SampleChild>(b => true);
+                              });
+
+            Assert.AreEqual(result, true);
+        }
+
+        [Test]
+        public void IsOfType4()
+        {
+            var result = Match.Value(new SampleChild() as SampleParent)
+                              .AndReturn<bool>()
+                              .With(x =>
+                              {
+                                  x.OfType().IsExactly<SampleChild>(b => true);
                               });
 
             Assert.AreEqual(result, true);

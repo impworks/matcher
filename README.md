@@ -33,6 +33,27 @@ Match.Value(new [] { 1, 2, 3 })
      });
 ```
 
+Array with a last argument as "rest":
+
+```csharp
+Match.Value(new [] { 1, 2, 3 })
+     .AndReturn<string>()
+     .With(ctx =>
+     {
+         ctx.ArrayRest((a, rest) => $"{a} and {rest.Length} more"); // 1 and 2 more
+     });
+```
+
+Tuple deconstructing (supports `ValueTuple` as well):
+
+```csharp
+Match.Value(Tuple.Create(1, 2, 3))
+     .AndReturn<string>()
+     .With(ctx => {
+         ctx.Tuple((a, b, c) => a + b + c); // equals 6
+     })
+```
+
 Type checking:
 
 ```csharp
@@ -49,9 +70,7 @@ Match.Value(new Child())
 
 ### Upcoming features
 
-* Tuple destructuring
 * Regex matching
-* Array with "rest"
 * IEnumerable destructuring
 * When guards
 
