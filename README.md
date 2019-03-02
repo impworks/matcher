@@ -4,7 +4,7 @@ A proof-of-concept library for strongly-typed pattern matching in C#.
 
 ### Basic syntax
 
-```
+```csharp
 var result = Match.Value(3)
                   .AndReturn<string>()
                   .With(ctx =>
@@ -20,7 +20,7 @@ var result = Match.Value(3)
 
 Array destructuring (up to 10 elements):
 
-```
+```csharp
 Match.Value(new [] { 1, 2, 3 })
      .AndReturn<string>()
      .With(ctx =>
@@ -35,7 +35,7 @@ Match.Value(new [] { 1, 2, 3 })
 
 Type checking:
 
-```
+```csharp
 Match.Value(new Child())
      .AndReturn<bool>()
      .With(ctx =>
