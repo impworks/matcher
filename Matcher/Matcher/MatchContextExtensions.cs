@@ -26,6 +26,15 @@ namespace Matcher
             context.Case(new DefaultMatchCase<TValue, TResult>(() => result));
         }
 
+
+        /// <summary>
+        /// Binds the value to a new name.
+        /// </summary>
+        public static void Default<TValue, TResult>(this IMatchContext<TValue, TResult> context, Func<TValue, TResult> func)
+        {
+            context.Case(new DefaultBindMatchCase<TValue, TResult>(func));
+        }
+
         #endregion
 
         #region Value
@@ -44,18 +53,6 @@ namespace Matcher
         public static void Value<TValue, TResult>(this IMatchContext<TValue, TResult> context, TValue value, TResult result)
         {
             context.Case(new ValueMatchCase<TValue, TResult>(value, () => result));
-        }
-
-        #endregion
-
-        #region Bind
-
-        /// <summary>
-        /// Binds the value to a new name.
-        /// </summary>
-        public static void Bind<TValue, TResult>(this IMatchContext<TValue, TResult> context, Func<TValue, TResult> func)
-        {
-            context.Case(new BindMatchCase<TValue, TResult>(func));
         }
 
         #endregion

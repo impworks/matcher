@@ -1,10 +1,10 @@
 ﻿namespace Matcher.Tests
 {
-    public class SampleBase
+    public class SampleParent
     {
     }
 
-    public class SampleParent: SampleBase
+    public class SampleChild: SampleParent
     {
     }
 }

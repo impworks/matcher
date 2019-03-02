@@ -36,6 +36,19 @@ namespace Matcher.Tests
         }
 
         [Test]
+        public void DefaultBind()
+        {
+            var result = Match.Value(100)
+                              .AndReturn<int>()
+                              .With(x =>
+                              {
+                                  x.Default(v => v + 1);
+                              });
+
+            Assert.AreEqual(result, 101);
+        }
+
+        [Test]
         public void NoMatch()
         {
             Assert.Throws<MatchFailedException>(() =>
@@ -44,19 +57,6 @@ namespace Matcher.Tests
                      .AndReturn<bool>()
                      .With(x => { x.Value(1, true); });
             });
-        }
-
-        [Test]
-        public void Bind()
-        {
-            var result = Match.Value(100)
-                              .AndReturn<int>()
-                              .With(x =>
-                              {
-                                  x.Bind(v => v + 1);
-                              });
-
-            Assert.AreEqual(result, 101);
         }
 
         [Test]

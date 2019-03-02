@@ -5,9 +5,9 @@ namespace Matcher.Cases
     /// <summary>
     /// Binds the value to a new name.
     /// </summary>
-    public class BindMatchCase<TValue, TResult> : IMatchCase<TValue, TResult>
+    public class DefaultBindMatchCase<TValue, TResult> : IMatchCase<TValue, TResult>
     {
-        public BindMatchCase(Func<TValue, TResult> factory)
+        public DefaultBindMatchCase(Func<TValue, TResult> factory)
         {
             _factory = factory;
         }
