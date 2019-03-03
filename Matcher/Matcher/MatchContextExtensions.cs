@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq.Expressions;
 using Matcher.Cases;
+using Matcher.Cases.Pattern;
 
 namespace Matcher
 {
@@ -386,6 +388,18 @@ namespace Matcher
         public static OfTypeMatchCaseBuilder<TValue, TResult> OfType<TValue, TResult>(this IMatchContext<TValue, TResult> context)
         {
             return new OfTypeMatchCaseBuilder<TValue, TResult>(context);
+        }
+
+        #endregion
+
+        #region Pattern
+
+        /// <summary>
+        /// Matches an arbitrary pattern.
+        /// </summary>
+        public static PatternMatchCaseBuilder<TValue, TResult> Pattern<TValue, TResult>(this IMatchContext<TValue, TResult> context, Expression<Func<IPatternBuilder, object>> expr)
+        {
+            return new PatternMatchCaseBuilder<TValue, TResult>(context, expr);
         }
 
         #endregion
