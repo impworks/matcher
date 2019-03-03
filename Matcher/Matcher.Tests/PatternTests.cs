@@ -52,6 +52,20 @@ namespace Matcher.Tests
         }
 
         [Test]
+        public void ValueTupleFail()
+        {
+            var m = Match.Value((1, 2))
+                         .AndReturn<string>()
+                         .With(ctx =>
+                         {
+                             ctx.Pattern(p => p.Tuple(1)).Map("test");
+                             ctx.Default("foo");
+                         });
+
+            Assert.AreEqual(m, "foo");
+        }
+
+        [Test]
         public void CommonTuple2()
         {
             var m = Match.Value(Tuple.Create(1, 2))
@@ -59,6 +73,20 @@ namespace Matcher.Tests
                          .With(ctx => ctx.Pattern(p => p.Tuple(1, 2)).Map("test"));
 
             Assert.AreEqual(m, "test");
+        }
+
+        [Test]
+        public void CommonTupleFail()
+        {
+            var m = Match.Value(Tuple.Create(1, 2))
+                         .AndReturn<string>()
+                         .With(ctx =>
+                         {
+                             ctx.Pattern(p => p.Tuple(1)).Map("test");
+                             ctx.Default("foo");
+                         });
+
+            Assert.AreEqual(m, "foo");
         }
 
         [Test]

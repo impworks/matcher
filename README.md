@@ -68,6 +68,28 @@ Match.Value(new Child())
      });
 ```
 
+Arbitrary nested patterns:
+
+```
+Match.Value(Tuple.Create(1, true, new[] { 1, 2, 3 }))
+     .AndReturn<string>()
+     .With(ctx =>
+     {
+         ctx.Pattern(p =>
+                p.Tuple(
+                    1,
+                    p.Var("b").OfType<bool>(),
+                    p.Array(
+                        1,
+                        p.Var("a"),
+                        p.Any()
+                    )
+                )
+            )
+            .Map<int, bool>((a, b) => $"{a} and {b}"); // 2 and True
+     });
+```
+
 ### Upcoming features
 
 * Regex matching
@@ -76,4 +98,4 @@ Match.Value(new Child())
 
 ### Known limitations
 
-* No nested structures :(
+* Arbitrary patterns do not allow static type checking and require explicit type annotations
