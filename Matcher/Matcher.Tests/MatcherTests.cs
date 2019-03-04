@@ -228,5 +228,49 @@ namespace Matcher.Tests
 
             Assert.AreEqual(result, true);
         }
+
+        [Test]
+        public void Regex1()
+        {
+            var result = Match.Value("hello world")
+                              .AndReturn<bool>()
+                              .With(x => x.Regex("[a-z]{5}", true));
+
+            Assert.AreEqual(result, true);
+        }
+        
+        [Test]
+        public void Regex2()
+        {
+            var result = Match.Value("hello world")
+                              .AndReturn<bool>()
+                              .With(x =>
+                              {
+                                  x.Regex("[0-9]{5}", true);
+                                  x.Default(false);
+                              });
+
+            Assert.AreEqual(result, false);
+        }
+
+        [Test]
+        public void Regex3()
+        {
+            var result = Match.Value("hello world")
+                              .AndReturn<int>()
+                              .With(x => x.Regex("[a-z]{5}", v => v.Length));
+
+            Assert.AreEqual(result, 5);
+        }
+        
+        [Test]
+        public void Regex4()
+        {
+            var result = Match.Value("hello world")
+                              .AndReturn<string>()
+                              .With(x => x.Regex("([a-z]+)\\s([a-z]+)", (_, a, b) => $"{b} and {a}"));
+
+            Assert.AreEqual(result, "world and hello");
+        }
     }
 }

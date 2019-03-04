@@ -9,12 +9,12 @@ namespace Matcher.Cases
     /// </summary>
     public class ArrayMatchCase<TElem, TValue, TResult> : IMatchCase<TValue, TResult>
     {
-        public ArrayMatchCase(Delegate d)
+        public ArrayMatchCase(Delegate func)
         {
-            _delegate = d;
+            _func = func;
         }
 
-        private readonly Delegate _delegate;
+        private readonly Delegate _func;
 
         public Option<TResult> Match(TValue value)
         {
@@ -23,16 +23,13 @@ namespace Matcher.Cases
 
             var arr = (TElem[])(object)value;
             var actualCount = arr.Length;
-            var expectedCount = _delegate.Method.GetParameters().Length;
+            var expectedCount = _func.Method.GetParameters().Length;
 
             if (actualCount != expectedCount)
                 return Option.None<TResult>();
 
-            var callExpr = Expression.Call(Expression.Constant(_delegate.Target), _delegate.Method, arr.Select(x => Expression.Constant(x)).ToArray());
-            var lambdaExpr = Expression.Lambda(callExpr);
-            var result = lambdaExpr.Compile().DynamicInvoke();
-
-            return Option.Value((TResult)result);
+            var args = arr.Select(x => Expression.Constant(x));
+            return MatchCaseHelper.InvokeWithArgs<TResult>(_func, args);
         }
     }
 }

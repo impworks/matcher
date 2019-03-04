@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 using Matcher.Cases;
 using Matcher.Cases.Pattern;
 
@@ -400,6 +401,206 @@ namespace Matcher
         public static PatternMatchCaseBuilder<TValue, TResult> Pattern<TValue, TResult>(this IMatchContext<TValue, TResult> context, Expression<Func<IPatternBuilder, object>> expr)
         {
             return new PatternMatchCaseBuilder<TValue, TResult>(context, expr);
+        }
+
+        #endregion
+
+        #region Regex (string)
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, TResult value)
+        {
+            context.Regex(regex, () => value);
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
+        }
+
+        #endregion
+
+        #region Regex (object)
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, TResult value)
+        {
+            context.Regex(regex, () => value);
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
+        }
+
+        /// <summary>
+        /// Matches the value against a regex.
+        /// </summary>
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, string, string, string, TResult> func)
+        {
+            context.Case(new RegexMatchCase<TResult>(regex, func));
         }
 
         #endregion

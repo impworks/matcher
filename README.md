@@ -70,7 +70,7 @@ Match.Value(new Child())
 
 Arbitrary nested patterns:
 
-```
+```csharp
 Match.Value(Tuple.Create(1, true, new[] { 1, 2, 3 }))
      .AndReturn<string>()
      .With(ctx =>
@@ -90,9 +90,19 @@ Match.Value(Tuple.Create(1, true, new[] { 1, 2, 3 }))
      });
 ```
 
+Regex matches:
+
+```csharp
+Match.Value("code is 123")
+     .AndReturn<int>()
+     .With(ctx =>
+     {
+         ctx.Regex("[0-9]+", v => int.Parse(v)); // 123
+     });
+```
+
 ### Upcoming features
 
-* Regex matching
 * IEnumerable destructuring
 * When guards
 

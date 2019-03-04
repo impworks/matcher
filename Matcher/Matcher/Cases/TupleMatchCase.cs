@@ -9,12 +9,12 @@ namespace Matcher.Cases
     /// </summary>
     public class TupleMatchCase<TValue, TResult>: IMatchCase<TValue, TResult>
     {
-        public TupleMatchCase(Delegate d)
+        public TupleMatchCase(Delegate func)
         {
-            _delegate = d;
+            _func = func;
         }
 
-        private readonly Delegate _delegate;
+        private readonly Delegate _func;
 
         public Option<TResult> Match(TValue value)
         {
@@ -27,7 +27,7 @@ namespace Matcher.Cases
             if (!typeName.StartsWith("System.Tuple`") && !typeName.StartsWith("System.ValueTuple`"))
                 return Option.None<TResult>();
 
-            var argCount = _delegate.Method.GetParameters().Length;
+            var argCount = _func.Method.GetParameters().Length;
             var valueCount = type.GetGenericArguments().Length;
 
             if (argCount != valueCount)
@@ -36,11 +36,7 @@ namespace Matcher.Cases
             var tupleExpr = Expression.Constant(value);
             var argExprs = Enumerable.Range(1, argCount).Select(x => Expression.PropertyOrField(tupleExpr, "Item" + x));
 
-            var callExpr = Expression.Call(Expression.Constant(_delegate.Target), _delegate.Method, argExprs);
-            var lambdaExpr = Expression.Lambda(callExpr);
-            var result = lambdaExpr.Compile().DynamicInvoke();
-
-            return Option.Value((TResult)result);
+            return MatchCaseHelper.InvokeWithArgs<TResult>(_func, argExprs);
         }
     }
 }
