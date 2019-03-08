@@ -7,16 +7,16 @@ namespace Matcher.Cases
     /// </summary>
     public class DefaultMatchCase<TValue, TResult> : IMatchCase<TValue, TResult>
     {
-        public DefaultMatchCase(Func<TResult> factory)
+        public DefaultMatchCase(Func<Option<TResult>> factory)
         {
             _factory = factory;
         }
 
-        private readonly Func<TResult> _factory;
+        private readonly Func<Option<TResult>> _factory;
 
         public Option<TResult> Match(TValue value)
         {
-            return Option.Value(_factory());
+            return _factory();
         }
     }
 }

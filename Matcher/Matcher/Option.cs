@@ -40,6 +40,14 @@ namespace Matcher
                 return _value;
             }
         }
+
+        /// <summary>
+        /// Implicit conversion operator.
+        /// </summary>
+        public static implicit operator Option<T>(T value)
+        {
+            return new Option<T>(value);
+        }
     }
 
     /// <summary>

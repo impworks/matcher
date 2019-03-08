@@ -16,7 +16,7 @@ namespace Matcher
         /// <summary>
         /// Returns a default value.
         /// </summary>
-        public static void Default<TValue, TResult>(this IMatchContext<TValue, TResult> context, Func<TResult> func)
+        public static void Default<TValue, TResult>(this IMatchContext<TValue, TResult> context, Func<Option<TResult>> func)
         {
             context.Case(new DefaultMatchCase<TValue, TResult>(func));
         }
@@ -33,7 +33,7 @@ namespace Matcher
         /// <summary>
         /// Binds the value to a new name.
         /// </summary>
-        public static void Default<TValue, TResult>(this IMatchContext<TValue, TResult> context, Func<TValue, TResult> func)
+        public static void Default<TValue, TResult>(this IMatchContext<TValue, TResult> context, Func<TValue, Option<TResult>> func)
         {
             context.Case(new DefaultBindMatchCase<TValue, TResult>(func));
         }
@@ -45,7 +45,7 @@ namespace Matcher
         /// <summary>
         /// Checks if the matched value equals a given value.
         /// </summary>
-        public static void Value<TValue, TResult>(this IMatchContext<TValue, TResult> context, TValue value, Func<TResult> func)
+        public static void Value<TValue, TResult>(this IMatchContext<TValue, TResult> context, TValue value, Func<Option<TResult>> func)
         {
             context.Case(new ValueMatchCase<TValue, TResult>(value, func));
         }
@@ -65,7 +65,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[],TResult>(func));
         }
@@ -73,7 +73,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -81,7 +81,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -89,7 +89,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -97,7 +97,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -105,7 +105,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -113,7 +113,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -121,7 +121,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -129,7 +129,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -137,7 +137,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -145,7 +145,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TResult> func)
+        public static void Array<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
         {
             context.Case(new ArrayMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -157,7 +157,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -165,7 +165,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -173,7 +173,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -181,7 +181,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -189,7 +189,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -197,7 +197,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -205,7 +205,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -213,7 +213,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -221,7 +221,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -229,7 +229,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -237,7 +237,7 @@ namespace Matcher
         /// <summary>
         /// Destructs an array.
         /// </summary>
-        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem[], TResult> func)
+        public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
         }
@@ -249,7 +249,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, TResult>(this IMatchContext<Tuple<T1>, TResult> context, Func<T1, TResult> func)
+        public static void Tuple<T1, TResult>(this IMatchContext<Tuple<T1>, TResult> context, Func<T1, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<Tuple<T1>, TResult>(func));
         }
@@ -257,7 +257,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, TResult>(this IMatchContext<Tuple<T1, T2>, TResult> context, Func<T1, T2, TResult> func)
+        public static void Tuple<T1, T2, TResult>(this IMatchContext<Tuple<T1, T2>, TResult> context, Func<T1, T2, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<Tuple<T1, T2>, TResult>(func));
         }
@@ -265,7 +265,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, TResult>(this IMatchContext<Tuple<T1, T2, T3>, TResult> context, Func<T1, T2, T3, TResult> func)
+        public static void Tuple<T1, T2, T3, TResult>(this IMatchContext<Tuple<T1, T2, T3>, TResult> context, Func<T1, T2, T3, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<Tuple<T1, T2, T3>, TResult>(func));
         }
@@ -273,7 +273,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4>, TResult> context, Func<T1, T2, T3, T4, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4>, TResult> context, Func<T1, T2, T3, T4, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<Tuple<T1, T2, T3, T4>, TResult>(func));
         }
@@ -281,7 +281,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, T5, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4, T5>, TResult> context, Func<T1, T2, T3, T4, T5, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, T5, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4, T5>, TResult> context, Func<T1, T2, T3, T4, T5, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<Tuple<T1, T2, T3, T4, T5>, TResult>(func));
         }
@@ -289,7 +289,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, T5, T6, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4, T5, T6>, TResult> context, Func<T1, T2, T3, T4, T5, T6, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, T5, T6, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4, T5, T6>, TResult> context, Func<T1, T2, T3, T4, T5, T6, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<Tuple<T1, T2, T3, T4, T5, T6>, TResult>(func));
         }
@@ -297,7 +297,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, T5, T6, T7, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4, T5, T6, T7>, TResult> context, Func<T1, T2, T3, T4, T5, T6, T7, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, T5, T6, T7, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4, T5, T6, T7>, TResult> context, Func<T1, T2, T3, T4, T5, T6, T7, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<Tuple<T1, T2, T3, T4, T5, T6, T7>, TResult>(func));
         }
@@ -305,7 +305,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, T5, T6, T7, TRest, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4, T5, T6, T7, TRest>, TResult> context, Func<T1, T2, T3, T4, T5, T6, T7, TRest, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, T5, T6, T7, TRest, TResult>(this IMatchContext<Tuple<T1, T2, T3, T4, T5, T6, T7, TRest>, TResult> context, Func<T1, T2, T3, T4, T5, T6, T7, TRest, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<Tuple<T1, T2, T3, T4, T5, T6, T7, TRest>, TResult>(func));
         }
@@ -317,7 +317,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, TResult>(this IMatchContext<ValueTuple<T1>, TResult> context, Func<T1, TResult> func)
+        public static void Tuple<T1, TResult>(this IMatchContext<ValueTuple<T1>, TResult> context, Func<T1, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<ValueTuple<T1>, TResult>(func));
         }
@@ -325,7 +325,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, TResult>(this IMatchContext<ValueTuple<T1, T2>, TResult> context, Func<T1, T2, TResult> func)
+        public static void Tuple<T1, T2, TResult>(this IMatchContext<ValueTuple<T1, T2>, TResult> context, Func<T1, T2, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<ValueTuple<T1, T2>, TResult>(func));
         }
@@ -333,7 +333,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, TResult>(this IMatchContext<ValueTuple<T1, T2, T3>, TResult> context, Func<T1, T2, T3, TResult> func)
+        public static void Tuple<T1, T2, T3, TResult>(this IMatchContext<ValueTuple<T1, T2, T3>, TResult> context, Func<T1, T2, T3, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<ValueTuple<T1, T2, T3>, TResult>(func));
         }
@@ -341,7 +341,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4>, TResult> context, Func<T1, T2, T3, T4, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4>, TResult> context, Func<T1, T2, T3, T4, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<ValueTuple<T1, T2, T3, T4>, TResult>(func));
         }
@@ -349,7 +349,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, T5, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4, T5>, TResult> context, Func<T1, T2, T3, T4, T5, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, T5, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4, T5>, TResult> context, Func<T1, T2, T3, T4, T5, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<ValueTuple<T1, T2, T3, T4, T5>, TResult>(func));
         }
@@ -357,7 +357,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, T5, T6, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4, T5, T6>, TResult> context, Func<T1, T2, T3, T4, T5, T6, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, T5, T6, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4, T5, T6>, TResult> context, Func<T1, T2, T3, T4, T5, T6, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<ValueTuple<T1, T2, T3, T4, T5, T6>, TResult>(func));
         }
@@ -365,7 +365,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, T5, T6, T7, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4, T5, T6, T7>, TResult> context, Func<T1, T2, T3, T4, T5, T6, T7, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, T5, T6, T7, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4, T5, T6, T7>, TResult> context, Func<T1, T2, T3, T4, T5, T6, T7, Option<TResult>> func)
         {
             context.Case(new TupleMatchCase<ValueTuple<T1, T2, T3, T4, T5, T6, T7>, TResult>(func));
         }
@@ -373,7 +373,7 @@ namespace Matcher
         /// <summary>
         /// Destructs a tuple.
         /// </summary>
-        public static void Tuple<T1, T2, T3, T4, T5, T6, T7, TRest, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest>, TResult> context, Func<T1, T2, T3, T4, T5, T6, T7, TRest, TResult> func)
+        public static void Tuple<T1, T2, T3, T4, T5, T6, T7, TRest, TResult>(this IMatchContext<ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest>, TResult> context, Func<T1, T2, T3, T4, T5, T6, T7, TRest, Option<TResult>> func)
             where TRest: struct
         {
             context.Case(new TupleMatchCase<ValueTuple<T1, T2, T3, T4, T5, T6, T7, TRest>, TResult>(func));
@@ -418,7 +418,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -426,7 +426,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -434,7 +434,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -442,7 +442,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -450,7 +450,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -458,7 +458,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -466,7 +466,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -474,7 +474,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -482,7 +482,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -490,7 +490,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -498,7 +498,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, string regex, Func<string, string, string, string, string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(new Regex(regex), func));
         }
@@ -518,7 +518,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -526,7 +526,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -534,7 +534,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -542,7 +542,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -550,7 +550,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -558,7 +558,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -566,7 +566,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -574,7 +574,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -582,7 +582,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -590,7 +590,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }
@@ -598,7 +598,7 @@ namespace Matcher
         /// <summary>
         /// Matches the value against a regex.
         /// </summary>
-        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, string, string, string, TResult> func)
+        public static void Regex<TResult>(this IMatchContext<string, TResult> context, Regex regex, Func<string, string, string, string, string, string, string, string, string, string, Option<TResult>> func)
         {
             context.Case(new RegexMatchCase<TResult>(regex, func));
         }

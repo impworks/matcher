@@ -29,7 +29,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory.
         /// </summary>
-        public void Map(Func<TResult> func)
+        public void Map(Func<Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -37,7 +37,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1>(Func<T1, TResult> func)
+        public void Map<T1>(Func<T1, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -45,7 +45,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1, T2>(Func<T1, T2, TResult> func)
+        public void Map<T1, T2>(Func<T1, T2, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -53,7 +53,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1, T2, T3>(Func<T1, T2, T3, TResult> func)
+        public void Map<T1, T2, T3>(Func<T1, T2, T3, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -61,7 +61,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1, T2, T3, T4>(Func<T1, T2, T3, T4, TResult> func)
+        public void Map<T1, T2, T3, T4>(Func<T1, T2, T3, T4, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -69,7 +69,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1, T2, T3, T4, T5>(Func<T1, T2, T3, T4, T5, TResult> func)
+        public void Map<T1, T2, T3, T4, T5>(Func<T1, T2, T3, T4, T5, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -77,7 +77,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1, T2, T3, T4, T5, T6>(Func<T1, T2, T3, T4, T5, T6, TResult> func)
+        public void Map<T1, T2, T3, T4, T5, T6>(Func<T1, T2, T3, T4, T5, T6, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -85,7 +85,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1, T2, T3, T4, T5, T6, T7>(Func<T1, T2, T3, T4, T5, T6, T7, TResult> func)
+        public void Map<T1, T2, T3, T4, T5, T6, T7>(Func<T1, T2, T3, T4, T5, T6, T7, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -93,7 +93,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1, T2, T3, T4, T5, T6, T7, T8>(Func<T1, T2, T3, T4, T5, T6, T7, T8, TResult> func)
+        public void Map<T1, T2, T3, T4, T5, T6, T7, T8>(Func<T1, T2, T3, T4, T5, T6, T7, T8, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -101,7 +101,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1, T2, T3, T4, T5, T6, T7, T8, T9>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult> func)
+        public void Map<T1, T2, T3, T4, T5, T6, T7, T8, T9>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }
@@ -109,7 +109,7 @@ namespace Matcher.Cases
         /// <summary>
         /// Maps the pattern to a factory using the captured variables.
         /// </summary>
-        public void Map<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TResult> func)
+        public void Map<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, Option<TResult>> func)
         {
             _context.Case(new PatternMatchCase<TValue, TResult>(_expr, func));
         }

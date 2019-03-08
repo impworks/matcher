@@ -54,7 +54,7 @@ namespace Matcher.Cases.Pattern
             var lambdaExpr = Expression.Lambda(callExpr);
             var result = lambdaExpr.Compile().DynamicInvoke();
 
-            return Option.Value((TResult)result);
+            return (Option<TResult>) result;
         }
     }
 }

@@ -101,10 +101,21 @@ Match.Value("code is 123")
      });
 ```
 
+When guards (similarly supported for all other constructs):
+
+```csharp
+Match.Value(new [] { 1, 2, 3 })
+     .AndReturn<string>()
+     .With(ctx =>
+     {
+         ctx.Array((a, b, c) => Option.When(a > b && b > c, "decreasing"));
+         ctx.Array((a, b, c) => Option.When(c > b && b > a, "increasing")); // this
+     });
+```
+
 ### Upcoming features
 
 * IEnumerable destructuring
-* When guards
 
 ### Known limitations
 

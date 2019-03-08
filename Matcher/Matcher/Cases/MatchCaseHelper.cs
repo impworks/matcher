@@ -15,7 +15,7 @@ namespace Matcher.Cases
             var lambdaExpr = Expression.Lambda(callExpr);
             var result = lambdaExpr.Compile().DynamicInvoke();
 
-            return Option.Value((T)result);
+            return (Option<T>) result;
         }
     }
 }

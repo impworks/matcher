@@ -7,14 +7,14 @@ namespace Matcher.Cases
     /// </summary>
     public class OfTypeMatchCase<TNewType, TValue, TResult>: IMatchCase<TValue, TResult>
     {
-        public OfTypeMatchCase(bool strict, Func<TNewType, TResult> factory)
+        public OfTypeMatchCase(bool strict, Func<TNewType, Option<TResult>> factory)
         {
             _strict = strict;
             _factory = factory;
         }
 
         private readonly bool _strict;
-        private readonly Func<TNewType, TResult> _factory;
+        private readonly Func<TNewType, Option<TResult>> _factory;
 
         public Option<TResult> Match(TValue value)
         {
@@ -23,7 +23,7 @@ namespace Matcher.Cases
                 : value is TNewType;
 
             if (isMatch)
-                return Option.Value(_factory((TNewType) (object) value));
+                return _factory((TNewType) (object) value);
 
             return Option.None<TResult>();
         }

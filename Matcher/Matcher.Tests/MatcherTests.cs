@@ -48,6 +48,35 @@ namespace Matcher.Tests
 
             Assert.AreEqual(result, 101);
         }
+        
+        [Test]
+        public void DefaultBindGuardedFail()
+        {
+            var result = Match.Value(100)
+                              .AndReturn<int>()
+                              .With(x =>
+                              {
+                                  x.Default(v => Option.When(v % 2 == 1, v + 2));
+                                  x.Default(v => v + 1);
+                              });
+
+            Assert.AreEqual(result, 101);
+        }
+
+
+        [Test]
+        public void DefaultBindGuarded()
+        {
+            var result = Match.Value(100)
+                              .AndReturn<int>()
+                              .With(x =>
+                              {
+                                  x.Default(v => Option.When(v % 2 == 0, v + 1237));
+                                  x.Default(v => v + 1);
+                              });
+
+            Assert.AreEqual(result, 1337);
+        }
 
         [Test]
         public void NoMatch()
@@ -88,6 +117,21 @@ namespace Matcher.Tests
         }
 
         [Test]
+        public void ArrayOneGuarded()
+        {
+            var result = Match.Value(new[] { 1 })
+                              .AndReturn<int>()
+                              .With(x =>
+                              {
+                                  x.Array(() => 0);
+                                  x.Array(a => Option.When(a > 1, a));
+                                  x.Array(a => Option.When(a == 1, 100));
+                              });
+
+            Assert.AreEqual(result, 100);
+        }
+
+        [Test]
         public void ArrayMultiple()
         {
             var result = Match.Value(new[] { 1, 2, 3 })
@@ -108,6 +152,21 @@ namespace Matcher.Tests
             var result = Match.Value(new[] {1, 2, 3})
                               .AndReturn<string>()
                               .With(x => { x.ArrayRest((a, rest) => $"{a} and {rest.Length} more"); });
+
+            Assert.AreEqual(result, "1 and 2 more");
+        }
+
+
+        [Test]
+        public void ArrayRestGuarded()
+        {
+            var result = Match.Value(new[] { 1, 2, 3 })
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.ArrayRest((a, rest) => Option.When(rest.Length > 2, "foo"));
+                                  x.ArrayRest((a, rest) => $"{a} and {rest.Length} more");
+                              });
 
             Assert.AreEqual(result, "1 and 2 more");
         }
@@ -157,6 +216,20 @@ namespace Matcher.Tests
         }
 
         [Test]
+        public void ClassicTuple2Guarded()
+        {
+            var result = Match.Value(Tuple.Create(1, "test"))
+                              .AndReturn<int>()
+                              .With(x =>
+                              {
+                                  x.Tuple((a, b) => Option.When(b == "foo", 100));
+                                  x.Tuple((a, b) => a + b.Length);
+                              });
+
+            Assert.AreEqual(result, 5);
+        }
+
+        [Test]
         public void VTuple()
         {
             var result = Match.Value(ValueTuple.Create(1))
@@ -183,6 +256,20 @@ namespace Matcher.Tests
                               .AndReturn<bool>()
                               .With(x =>
                               {
+                                  x.OfType().Is<SampleParent>(b => true);
+                              });
+
+            Assert.AreEqual(result, true);
+        }
+
+        [Test]
+        public void IsOfTypeGuarded()
+        {
+            var result = Match.Value(new SampleChild { Value = 100 })
+                              .AndReturn<bool>()
+                              .With(x =>
+                              {
+                                  x.OfType().Is<SampleParent>(b => Option.When(b.Value == 1, false));
                                   x.OfType().Is<SampleParent>(b => true);
                               });
 
@@ -271,6 +358,20 @@ namespace Matcher.Tests
                               .With(x => x.Regex("([a-z]+)\\s([a-z]+)", (_, a, b) => $"{b} and {a}"));
 
             Assert.AreEqual(result, "world and hello");
+        }
+
+        [Test]
+        public void RegexGuard()
+        {
+            var result = Match.Value("hello world")
+                              .AndReturn<int>()
+                              .With(x =>
+                              {
+                                  x.Regex("[a-z]{5}", v => Option.When(v != "hello", v.Length));
+                                  x.Default(100);
+                              });
+
+            Assert.AreEqual(result, 100);
         }
     }
 }
