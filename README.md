@@ -49,9 +49,21 @@ Tuple deconstructing (supports `ValueTuple` as well):
 ```csharp
 Match.Value(Tuple.Create(1, 2, 3))
      .AndReturn<string>()
-     .With(ctx => {
+     .With(ctx =>
+     {
          ctx.Tuple((a, b, c) => a + b + c); // equals 6
-     })
+     });
+```
+
+Nullable value unpacking:
+
+```csharp
+Match.Value((int?)10)
+     .AndReturn<string>()
+     .With(ctx =>
+     {
+         ctx.Option(i => $"Value is {i}"); // value is 10
+     });
 ```
 
 Type checking:

@@ -604,5 +604,17 @@ namespace Matcher
         }
 
         #endregion
+
+        #region Options
+
+        /// <summary>
+        /// Matches the optional value.
+        /// </summary>
+        public static void Option<TElem, TResult>(this IMatchContext<TElem?, TResult> context, Func<TElem, Option<TResult>> func) where TElem : struct
+        {
+            context.Case(new OptionMatchCase<TElem, TResult>(func));
+        }
+
+        #endregion
     }
 }

@@ -373,5 +373,33 @@ namespace Matcher.Tests
 
             Assert.AreEqual(result, 100);
         }
+
+        [Test]
+        public void OptionValue()
+        {
+            var result = Match.Value((int?) 10)
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.Value(null, "Missing");
+                                  x.Option(i => "Exists");
+                              });
+
+            Assert.AreEqual(result, "Exists");
+        }
+
+        [Test]
+        public void OptionValue2()
+        {
+            var result = Match.Value((int?)null)
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.Option(i => "Exists");
+                                  x.Value(null, "Missing");
+                              });
+
+            Assert.AreEqual(result, "Missing");
+        }
     }
 }
