@@ -312,6 +312,7 @@ namespace Matcher
 
         #endregion
 
+        #if NETSTANDARD
         #region ValueTuple
 
         /// <summary>
@@ -380,6 +381,7 @@ namespace Matcher
         }
 
         #endregion
+        #endif
 
         #region OfType
 

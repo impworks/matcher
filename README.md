@@ -1,5 +1,7 @@
 # Matcher
 
+![AppVeyor](https://img.shields.io/appveyor/ci/impworks/Matcher.svg) ![AppVeyor Tests](https://img.shields.io/appveyor/tests/impworks/Matcher.svg) [![NuGet](https://img.shields.io/nuget/v/Impworks.Matcher.svg)](https://www.nuget.org/packages/Impworks.Matcher/) ![NuGet Downloads](https://img.shields.io/nuget/dt/Impworks.Matcher.svg)
+
 A proof-of-concept library for strongly-typed pattern matching in C#.
 
 ### Basic syntax
