@@ -5,7 +5,7 @@ namespace Matcher
     /// <summary>
     /// The list of cases to match the value.
     /// </summary>
-    public interface IMatchContext<TValue, TResult>
+    public interface IMatchContext<out TValue, TResult>
     {
         /// <summary>
         /// Adds a new case to the context.

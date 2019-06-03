@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Matcher.Tests
@@ -172,7 +173,7 @@ namespace Matcher.Tests
         }
 
         [Test]
-        public void ArrayRestEmpty()
+        public void ArrayRestExact()
         {
             var result = Match.Value(new [] { 1, 2 })
                               .AndReturn<string>()
@@ -189,6 +190,105 @@ namespace Matcher.Tests
                               .With(x =>
                               {
                                   x.ArrayRest((a, b, rest) => $"{a}, {b}, and {rest.Length} more");
+                                  x.Default(a => $"only {a.Length} item");
+                              });
+
+            Assert.AreEqual(result, "only 1 item");
+        }
+
+        [Test]
+        public void SeqEmpty()
+        {
+            var result = Match.Value(Enumerable.Range(1, 0))
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.Seq(() => "empty");
+                                  x.Seq(a => $"just {a}");
+                              });
+
+            Assert.AreEqual(result, "empty");
+        }
+
+        [Test]
+        public void SeqOne()
+        {
+            var result = Match.Value(Enumerable.Range(1, 1))
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.Seq(() => "empty");
+                                  x.Seq(a => $"just {a}");
+                              });
+
+            Assert.AreEqual(result, "just 1");
+        }
+        
+        [Test]
+        public void SeqOneGuarded()
+        {
+            var result = Match.Value(Enumerable.Range(1, 1))
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.Seq(() => "empty");
+                                  x.Seq(a => Option.When(a > 1, $"just {a} > 1"));
+                                  x.Seq(a => $"just {a}");
+                              });
+
+            Assert.AreEqual(result, "just 1");
+        }
+
+        [Test]
+        public void SeqMultiple()
+        {
+            var result = Match.Value(Enumerable.Range(1, 2))
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.Seq(() => "empty");
+                                  x.Seq(a => $"just {a}");
+                                  x.Seq((a, b) => $"{a} and {b}");
+                              });
+
+            Assert.AreEqual(result, "1 and 2");
+        }
+
+        [Test]
+        public void SeqRest()
+        {
+            var result = Match.Value(new [] { 1, 2, 3 })
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.SeqRest((a, b) => $"{a} and {b.Count()} more");
+                              });
+
+            Assert.AreEqual(result, "1 and 2 more");
+        }
+
+        [Test]
+        public void SeqRestExact()
+        {
+            var result = Match.Value(new[] { 1, 2 })
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.SeqRest((a, b, c) => $"{a}, {b} and {c.Count()} more");
+                              });
+
+            Assert.AreEqual(result, "1, 2 and 0 more");
+        }
+
+
+        [Test]
+        public void SeqRestFewer()
+        {
+            var result = Match.Value(new[] { 1 })
+                              .AndReturn<string>()
+                              .With(x =>
+                              {
+                                  x.SeqRest((a, b, c) => $"{a}, {b} and {c.Count()} more");
                                   x.Default(a => $"only {a.Length} item");
                               });
 

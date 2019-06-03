@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matcher", "Matcher\Matcher.csproj", "{459C51BA-1A87-4501-BCD9-5F0E6E113BA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matcher", "Matcher\Matcher.csproj", "{459C51BA-1A87-4501-BCD9-5F0E6E113BA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matcher.Tests", "Matcher.Tests\Matcher.Tests.csproj", "{311D1574-3FA3-406F-A696-FCA96833F761}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Matcher.Tests", "Matcher.Tests\Matcher.Tests.csproj", "{311D1574-3FA3-406F-A696-FCA96833F761}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CBA8A05-333E-44D1-9A66-5A992A7C5380}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

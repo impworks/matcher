@@ -46,6 +46,8 @@ Match.Value(new [] { 1, 2, 3 })
      });
 ```
 
+Sequences (`IEnumerable<T>`) are also supported similar to arrays with the `Seq` and `SeqRest` methods.
+
 Tuple deconstructing (supports `ValueTuple` as well):
 
 ```csharp
@@ -127,10 +129,6 @@ Match.Value(new [] { 1, 2, 3 })
      });
 ```
 
-### Upcoming features
-
-* IEnumerable destructuring
-
 ### Known limitations
 
-* Arbitrary patterns do not allow static type checking and require explicit type annotations
+* Arbitrary patterns do not allow static type checking and require explicit type annotations.

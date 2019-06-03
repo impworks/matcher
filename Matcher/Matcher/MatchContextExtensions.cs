@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using Matcher.Cases;
@@ -240,6 +242,182 @@ namespace Matcher
         public static void ArrayRest<TElem, TResult>(this IMatchContext<TElem[], TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem[], Option<TResult>> func)
         {
             context.Case(new ArrayRestMatchCase<TElem, TElem[], TResult>(func));
+        }
+
+        #endregion
+
+        #region Sequence
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void Seq<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, Option<TResult>> func)
+        {
+            context.Case(new SeqMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        #endregion
+
+        #region Sequence with rest
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
+        }
+
+        /// <summary>
+        /// Destructs a sequence.
+        /// </summary>
+        public static void SeqRest<TElem, TResult>(this IMatchContext<IEnumerable<TElem>, TResult> context, Func<TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, TElem, IEnumerable<TElem>, Option<TResult>> func)
+        {
+            context.Case(new SeqRestMatchCase<TElem, IEnumerable<TElem>, TResult>(func));
         }
 
         #endregion
